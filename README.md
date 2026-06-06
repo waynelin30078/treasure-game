@@ -1,4 +1,11 @@
 # Use Claude Code to Explore and Develop the project 
+
+## 🎮 Live Demo
+- **GitHub Pages:** https://waynelin30078.github.io/treasure-game/
+- **Vercel:** https://claudecodetreasuregame-initial-ten-indol.vercel.app
+
+> 注意:這兩個都是純前端部署。登入/註冊/分數記錄需要 `server/` 後端(`/api/*`),在線上版無法運作 — 遊戲本身與訪客模式可正常遊玩(分數不會儲存)。完整功能請在本地用 `npm run dev:all`。
+
 ### Download the zip file of branch 'initial'
 https://github.com/uopsdod/claude_code_treasure_game/tree/initial
 
