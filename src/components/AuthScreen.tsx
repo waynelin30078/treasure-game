@@ -146,7 +146,7 @@ export function AuthScreen({ onLogin, onSignup, onGuest }: AuthScreenProps) {
           fontSize: '0.95rem',
         }}
       >
-        以訪客身分遊玩(分數不會儲存)
+← 返回遊戲(以訪客身分遊玩,分數不會儲存)
       </button>
     </div>
   );

@@ -8,7 +8,8 @@
       "Bash(npm i *)",
       "Bash(git init *)",
       "Bash(git add *)",
-      "Bash(git -c user.name=wayne -c user.email=waynelin30078@gmail.com commit -q -m 'Add GitHub Pages deployment workflow *)"
+      "Bash(git -c user.name=wayne -c user.email=waynelin30078@gmail.com commit -q -m 'Add GitHub Pages deployment workflow *)",
+      "Bash(git -c user.name=wayne -c user.email=waynelin30078@gmail.com commit -q -m 'Land on game by default; make login optional *)"
     ]
   }
 }

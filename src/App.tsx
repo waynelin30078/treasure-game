@@ -19,8 +19,9 @@ interface Box {
 
 export default function App() {
   const { user, loading, login, signup, logout, setHighScore } = useAuth();
-  // Whether the player chose to play without an account (no score saved).
-  const [isGuest, setIsGuest] = useState(false);
+  // Whether to show the login/signup screen. The game is the default landing
+  // page; players only open this when they want their score recorded.
+  const [showAuth, setShowAuth] = useState(false);
 
   const [boxes, setBoxes] = useState<Box[]>([]);
   const [score, setScore] = useState(0);
@@ -103,10 +104,10 @@ export default function App() {
     initializeGame();
   };
 
-  // Leaves guest mode / logs out and returns to the auth screen.
-  const handleExitToAuth = () => {
-    setIsGuest(false);
+  // Logs the user out and returns to the game (still playable as a guest).
+  const handleLogout = () => {
     logout();
+    setShowAuth(false);
   };
 
   // While restoring a session from a stored token, render nothing to avoid a flash.
@@ -114,13 +115,13 @@ export default function App() {
     return <div className="min-h-screen bg-gradient-to-b from-amber-50 to-amber-100" />;
   }
 
-  // Gate: require login or an explicit guest choice before showing the game.
-  if (!user && !isGuest) {
+  // Only show the auth screen when the player explicitly asks to log in.
+  if (showAuth && !user) {
     return (
       <AuthScreen
         onLogin={login}
         onSignup={signup}
-        onGuest={() => setIsGuest(true)}
+        onGuest={() => setShowAuth(false)}
       />
     );
   }
@@ -148,7 +149,7 @@ export default function App() {
             </span>
             <button
               type="button"
-              onClick={handleExitToAuth}
+              onClick={handleLogout}
               style={{
                 padding: '0.35rem 0.75rem',
                 borderRadius: '0.5rem',
@@ -167,7 +168,7 @@ export default function App() {
             <span>👻 訪客模式・分數不會儲存</span>
             <button
               type="button"
-              onClick={handleExitToAuth}
+              onClick={() => setShowAuth(true)}
               style={{
                 padding: '0.35rem 0.75rem',
                 borderRadius: '0.5rem',
